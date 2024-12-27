@@ -17,9 +17,30 @@
             <button onclick="addTask()">添加任务</button>
         </div>
 
+        <div class="manage-rewards">
+            <h2>奖励管理</h2>
+            <input type="text" id="newRewardName" placeholder="输入奖励名称">
+            <input type="number" id="newRewardPoints" placeholder="所需积分">
+            <button onclick="addRewardItem()" class="add-reward-btn">添加奖励选项</button>
+            <div id="rewardsList" class="rewards-list"></div>
+        </div>
+
+        <div class="spend-points">
+            <h2>积分兑换</h2>
+            <select id="rewardSelect" class="reward-select">
+                <option value="">选择奖励</option>
+            </select>
+            <button onclick="spendPointsFromList()" class="spend-btn">兑换奖励</button>
+        </div>
+
         <div class="task-list">
             <h2>任务列表</h2>
             <div id="tasks"></div>
+        </div>
+
+        <div class="reward-history">
+            <h2>兑换记录</h2>
+            <div id="rewards"></div>
         </div>
 
         <div class="total-points">

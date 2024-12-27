@@ -1,15 +1,145 @@
-.action-buttons {
-    margin-top: 20px;
+/* 基础样式 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+h1 {
+    text-align: center;
+    color: #2196F3;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+/* 添加任务区域 */
+.add-task {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px; /* 防止 iOS 自动缩放 */
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    width: 100%;
+    margin-bottom: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+/* 添加任务按钮 - 明亮的绿色 */
+.add-task button {
+    background-color: #00c853;
+    box-shadow: 0 2px 5px rgba(0,200,83,0.3);
+}
+
+.add-task button:hover {
+    background-color: #00e676;
+    transform: translateY(-2px);
+}
+
+/* 兑换奖励按钮 - 明亮的紫色 */
+.spend-btn {
+    background-color: #d500f9;
+    box-shadow: 0 2px 5px rgba(213,0,249,0.3);
+}
+
+.spend-btn:hover {
+    background-color: #e040fb;
+    transform: translateY(-2px);
+}
+
+/* 任务列表样式 */
+.task-list {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.task-item {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    padding: 12px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.task-item span {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.task-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+/* 按钮样式 */
+.complete-btn {
+    background-color: #4CAF50;
+}
+
+.delete-btn {
+    background-color: #f44336;
 }
 
 .reset-btn {
-    background-color: #ff9800;  /* 橙色 */
+    background-color: #ff9800;
 }
 
 .summary-btn {
-    background-color: #2196F3;  /* 蓝色 */
+    background-color: #2196F3;
+}
+
+/* 总分区域 */
+.total-points {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
 }
 
 /* 弹窗样式 */
@@ -21,6 +151,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
 }
 
 .modal-content {
@@ -28,22 +159,125 @@
     margin: 15% auto;
     padding: 20px;
     border-radius: 8px;
-    width: 80%;
+    width: 90%;
     max-width: 500px;
+    position: relative;
 }
 
 .close {
-    float: right;
-    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 10px;
     font-size: 24px;
+    cursor: pointer;
 }
 
-@media screen and (max-width: 600px) {
-    .action-buttons {
-        flex-direction: column;
+.summary-list {
+    margin-top: 20px;
+}
+
+.summary-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.summary-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* 媒体查询 - 桌面端样式 */
+@media screen and (min-width: 768px) {
+    .task-item {
+        flex-direction: row;
+        align-items: center;
     }
-    
+
+    .task-item span {
+        margin-bottom: 0;
+        margin-right: auto;
+    }
+
+    .task-buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .task-buttons button {
+        width: auto;
+        margin-bottom: 0;
+    }
+
+    input {
+        width: calc(50% - 5px);
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .action-buttons {
+        flex-direction: row;
+    }
+
     .action-buttons button {
-        width: 100%;
+        width: calc(50% - 5px);
+    }
+}
+
+/* 添加按钮点击效果 */
+button:active {
+    transform: translateY(1px);
+}
+
+.manage-rewards {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.add-reward-btn {
+    background-color: #7c4dff;  /* 深紫色 */
+    box-shadow: 0 2px 5px rgba(124,77,255,0.3);
+}
+
+.add-reward-btn:hover {
+    background-color: #651fff;
+    transform: translateY(-2px);
+}
+
+.rewards-list {
+    margin-top: 15px;
+}
+
+.reward-item-list {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.reward-select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+}
+
+@media screen and (min-width: 768px) {
+    .reward-item-list {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .reward-item-list button {
+        width: auto;
+        margin-left: 10px;
     }
 } 
