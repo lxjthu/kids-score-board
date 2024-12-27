@@ -2,6 +2,7 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>小朋友任务积分板</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -23,6 +24,10 @@
 
         <div class="total-points">
             <h2>总积分：<span id="totalPoints">0</span></h2>
+            <div class="action-buttons">
+                <button onclick="resetPoints()" class="reset-btn">清零</button>
+                <button onclick="showDailySummary()" class="summary-btn">今日总结</button>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
